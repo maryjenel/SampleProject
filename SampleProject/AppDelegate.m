@@ -18,6 +18,7 @@
 @property UINavigationController *activityNav;
 @property UINavigationController *friendsNav;
 @property UINavigationController *searchNav;
+@property SideBarViewController *sideBarVC;
 
 
 @end
@@ -55,7 +56,7 @@
     self.activityNav = [[UINavigationController alloc]initWithRootViewController:self.activityVC];
     self.friendsNav = [[UINavigationController alloc]initWithRootViewController:self.friendsVC];
     self.searchNav = [[UINavigationController alloc]initWithRootViewController:self.searchVC];
-
+    self.sideBarVC = [[SideBarViewController alloc]initWithLeftViewController:self.menuNav mainViewController:self.profileNav gap:50];
     //creates a new window for the root VC
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.profileNav;
@@ -90,7 +91,7 @@
 }
 -(void)menuDidTapFriends:(MenuTableViewController *)controller
 {
-    self.window.rootViewController = self.friendsNav;
+   self.window.rootViewController = self.friendsNav;
     if (self.friendsNav.viewControllers[0] != self.friendsVC)
     {
         [self.friendsNav setViewControllers:@[self.friendsVC] animated:YES];
@@ -99,7 +100,7 @@
 }
 -(void)menuDidTapOpportunities:(MenuTableViewController *)controller
 {
-    self.window.rootViewController = self.opportunitiesNav;
+   self.window.rootViewController = self.opportunitiesNav;
     if (self.opportunitiesNav.viewControllers[0] != self.opportunitiesVC) {
         [self.opportunitiesNav setViewControllers:@[self.opportunitiesVC] animated:YES];
     }
@@ -107,14 +108,14 @@
 }
 -(void)menuDidTapSearch:(MenuTableViewController *)controller
 {
-    self.window.rootViewController = self.searchNav;
+   self.window.rootViewController = self.searchNav;
     if (self.searchNav.viewControllers[0] != self.searchVC) {
         [self.searchNav setViewControllers:@[self.searchVC] animated:YES];
     }
 }
 -(void)menuDidTapActivity:(MenuTableViewController *)controller
 {
-    self.window.rootViewController = self.activityNav;
+   self.window.rootViewController = self.activityNav;
     if (self.activityNav.viewControllers[0] != self.activityVC) {
         [self.activityNav setViewControllers:@[self.opportunitiesVC] animated:YES];
     }

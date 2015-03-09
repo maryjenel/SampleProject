@@ -14,6 +14,7 @@
 #import "ActivityViewController.h"
 #import "FriendsViewController.h"
 #import "SearchViewController.h"
+#import "SideBarViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

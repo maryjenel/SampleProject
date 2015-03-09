@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622A8CCF1AAE528900A5C32D /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 622A8CCE1AAE528900A5C32D /* SideBarViewController.m */; };
 		6296E8431AABE4AA00A0FBAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296E8421AABE4AA00A0FBAD /* main.m */; };
 		6296E8461AABE4AA00A0FBAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6296E8451AABE4AA00A0FBAD /* AppDelegate.m */; };
 		6296E8491AABE4AA00A0FBAD /* SampleProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6296E8471AABE4AA00A0FBAD /* SampleProject.xcdatamodeld */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		622A8CCD1AAE528900A5C32D /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
+		622A8CCE1AAE528900A5C32D /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
 		6296E83D1AABE4AA00A0FBAD /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6296E8411AABE4AA00A0FBAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6296E8421AABE4AA00A0FBAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				629B48061AAD0C6C008B30DB /* MenuTableViewController.m */,
 				6296E84A1AABE4AA00A0FBAD /* OpportunitiesViewController.h */,
 				6296E84B1AABE4AA00A0FBAD /* OpportunitiesViewController.m */,
+				622A8CCD1AAE528900A5C32D /* SideBarViewController.h */,
+				622A8CCE1AAE528900A5C32D /* SideBarViewController.m */,
 				629B48081AAD22C1008B30DB /* ProfileViewController.h */,
 				629B48091AAD22C1008B30DB /* ProfileViewController.m */,
 				629B480B1AAD22D6008B30DB /* ActivityViewController.h */,
@@ -266,6 +271,7 @@
 				6296E8461AABE4AA00A0FBAD /* AppDelegate.m in Sources */,
 				6296E8431AABE4AA00A0FBAD /* main.m in Sources */,
 				6296E84C1AABE4AA00A0FBAD /* OpportunitiesViewController.m in Sources */,
+				622A8CCF1AAE528900A5C32D /* SideBarViewController.m in Sources */,
 				6296E8491AABE4AA00A0FBAD /* SampleProject.xcdatamodeld in Sources */,
 				629B48131AAD22F3008B30DB /* SearchViewController.m in Sources */,
 				629B48101AAD22E1008B30DB /* FriendsViewController.m in Sources */,
