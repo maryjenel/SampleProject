@@ -8,7 +8,17 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+
+@interface AppDelegate ()<MenuViewControllerDelegate, OpportunitiesViewControllerDelegate,ProfileViewControllerDelegate,ActivityViewControllerDelegate, FriendsViewControllerDelegate, SearchViewControllerDelegate>
+
+
+@property UINavigationController *menuNav;
+@property UINavigationController *opportunitiesNav;
+@property UINavigationController *profileNav;
+@property UINavigationController *activityNav;
+@property UINavigationController *friendsNav;
+@property UINavigationController *searchNav;
+
 
 @end
 
@@ -16,8 +26,106 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //navigates through the main bundle. instatiates the view controllers.
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+
+    self.menuVC = [storyboard instantiateViewControllerWithIdentifier:@"menuVC"];
+    self.menuVC.delegate = self;
+
+    self.opportunitiesVC = [storyboard instantiateViewControllerWithIdentifier:@"opportunitiesVC"];
+    self.opportunitiesVC.delegate = self;
+
+
+    self.profileVC = [storyboard instantiateViewControllerWithIdentifier:@"profileVC"];
+    self.profileVC.delegate = self;
+
+    self.activityVC = [storyboard instantiateViewControllerWithIdentifier:@"activityVC"];
+    self.activityVC.delegate = self;
+
+    self.friendsVC = [storyboard instantiateViewControllerWithIdentifier:@"friendsVC"];
+    self.friendsVC.delegate = self;
+
+    self.searchVC = [storyboard instantiateViewControllerWithIdentifier:@"searchVC"];
+    self.searchVC.delegate = self;
+
+    self.menuNav = [[UINavigationController alloc] initWithRootViewController:self.menuVC];
+    self.opportunitiesNav = [[UINavigationController alloc] initWithRootViewController:self.opportunitiesVC];
+    self.profileNav = [[UINavigationController alloc]initWithRootViewController:self.profileVC];
+    self.activityNav = [[UINavigationController alloc]initWithRootViewController:self.activityVC];
+    self.friendsNav = [[UINavigationController alloc]initWithRootViewController:self.friendsVC];
+    self.searchNav = [[UINavigationController alloc]initWithRootViewController:self.searchVC];
+
+    //creates a new window for the root VC
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.profileNav;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     return YES;
+}
+-(void)DidTapMenuButtonOnProfileVC:(ProfileViewController *)controller
+{
+    self.window.rootViewController = self.menuNav;
+}
+-(void)DidTapMenuButtonOnSearchVC:(SearchViewController *)controller
+{
+    self.window.rootViewController = self.menuNav;
+
+}
+-(void)DidTapMenuButtonOnActivityVC:(ActivityViewController *)controller
+{
+    self.window.rootViewController = self.menuNav;
+}
+-(void)DidTapMenuButtonOnFriendsVC:(FriendsViewController *)controller
+{
+    self.window.rootViewController = self.menuNav;
+}
+
+-(void)menuDidTapProfile:(MenuTableViewController *)controller
+{
+    self.window.rootViewController = self.profileNav;
+    if (self.profileNav.viewControllers[0] != self.profileVC) {
+        [self.profileNav setViewControllers:@[self.profileVC] animated:YES];
+    }
+}
+-(void)menuDidTapFriends:(MenuTableViewController *)controller
+{
+    self.window.rootViewController = self.friendsNav;
+    if (self.friendsNav.viewControllers[0] != self.friendsVC)
+    {
+        [self.friendsNav setViewControllers:@[self.friendsVC] animated:YES];
+    }
+    
+}
+-(void)menuDidTapOpportunities:(MenuTableViewController *)controller
+{
+    self.window.rootViewController = self.opportunitiesNav;
+    if (self.opportunitiesNav.viewControllers[0] != self.opportunitiesVC) {
+        [self.opportunitiesNav setViewControllers:@[self.opportunitiesVC] animated:YES];
+    }
+
+}
+-(void)menuDidTapSearch:(MenuTableViewController *)controller
+{
+    self.window.rootViewController = self.searchNav;
+    if (self.searchNav.viewControllers[0] != self.searchVC) {
+        [self.searchNav setViewControllers:@[self.searchVC] animated:YES];
+    }
+}
+-(void)menuDidTapActivity:(MenuTableViewController *)controller
+{
+    self.window.rootViewController = self.activityNav;
+    if (self.activityNav.viewControllers[0] != self.activityVC) {
+        [self.activityNav setViewControllers:@[self.opportunitiesVC] animated:YES];
+    }
+
+}
+
+-(void)DidTapMenuButtononOpportunitiesVC:(OpportunitiesViewController *)controller
+{
+    self.window.rootViewController = self.menuNav;
+
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
