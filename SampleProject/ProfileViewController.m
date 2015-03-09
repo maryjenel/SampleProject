@@ -14,14 +14,16 @@
 
 @implementation ProfileViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
   
 }
 
 - (IBAction)onMenuButtonTapped:(UIBarButtonItem *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(DidTapMenuButtonOnProfileVC:)]) {
+    if ([self.delegate respondsToSelector:@selector(DidTapMenuButtonOnProfileVC:)])
+    {
         [self.delegate DidTapMenuButtonOnProfileVC:self];
     }
 }

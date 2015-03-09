@@ -77,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60919DC71AAE3E93007094D5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6296E84D1AABE4AA00A0FBAD /* Main.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		6296E8341AABE4AA00A0FBAD = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +109,7 @@
 				6296E8441AABE4AA00A0FBAD /* AppDelegate.h */,
 				6296E8451AABE4AA00A0FBAD /* AppDelegate.m */,
 				629B48141AAD22F7008B30DB /* ViewControllers */,
-				6296E84D1AABE4AA00A0FBAD /* Main.storyboard */,
+				60919DC71AAE3E93007094D5 /* Storyboard */,
 				6296E8501AABE4AA00A0FBAD /* Images.xcassets */,
 				6296E8521AABE4AA00A0FBAD /* LaunchScreen.xib */,
 				6296E8471AABE4AA00A0FBAD /* SampleProject.xcdatamodeld */,

@@ -8,23 +8,43 @@
 
 #import "SearchViewController.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+
+@property NSArray *searchResultsArray;
+
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation SearchViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
 }
 
 - (IBAction)onMenuButtonTapped:(UIBarButtonItem *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(DidTapMenuButtonOnSearchVC:)]) {
+    if ([self.delegate respondsToSelector:@selector(DidTapMenuButtonOnSearchVC:)])
+    {
         [self.delegate DidTapMenuButtonOnSearchVC:self];
     }
 }
 
+#pragma mark - UITableView Methods
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: set cell.textLabel.text according to what kind of objects will be in searchResultsArray.
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.text = [self.searchResultsArray objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.searchResultsArray.count;
+}
 
 @end
