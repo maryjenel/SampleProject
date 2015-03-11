@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UIViewController *mainViewController;
 @property (nonatomic, assign) NSInteger gap;
 @property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (assign)BOOL firstTime;
 @end
 
 @implementation SideBarViewController
@@ -26,6 +28,7 @@
         _leftViewController = leftViewController;
         _mainViewController = mainViewController;
         _gap = gap;
+        _firstTime = YES;
 
         self.view.backgroundColor = [UIColor blackColor];
 
@@ -39,7 +42,7 @@
 {
     //creates scroll view programaticallly setting it to 0 because of auto layout
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectZero];
-
+    self.scrollView.pagingEnabled = YES;
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.scrollView];
 //set autolayout constraints
@@ -63,6 +66,46 @@
     [self addChildViewController:viewController];
     [viewController didMoveToParentViewController:self];
 
+}
+
+-(BOOL)isOpen {
+
+    //is content offset x = to 0?
+    CGPoint contentOffset = self.scrollView.contentOffset;
+    return contentOffset.x ==0;
+
+}
+
+//whether or not to close the menu
+-(void)closeMenuAnimated:(BOOL)animated
+{
+    CGPoint contentOffset = self.scrollView.contentOffset;
+    contentOffset.x = CGRectGetWidth(self.view.bounds) - self.gap;
+    [self.scrollView setContentOffset:contentOffset animated:animated];
+}
+
+-(void)openMenuAnimated:(BOOL)animated
+{
+    [self.scrollView setContentOffset:CGPointZero animated:animated];
+}
+
+-(void)toggleMenu
+{
+    if ([self isOpen]) {
+        [self closeMenuAnimated:YES];
+    }else
+    {
+        [self openMenuAnimated:YES];
+    }
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    //if
+    if (self.firstTime) {
+        self.firstTime = NO;
+        [self closeMenuAnimated:NO];
+    }
 }
 
 //set up view controller heirachy
@@ -92,9 +135,9 @@
     NSArray *mainViewVertConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[mainView(==outerView)]|" options:0 metrics:nil views:viewsDictionary];
     [self.view addConstraints:mainViewVertConstraints];
 
-
-
 }
+
+
 
 
 @end

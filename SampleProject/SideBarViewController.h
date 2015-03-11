@@ -11,4 +11,6 @@
 @interface SideBarViewController : UIViewController
 
 -(instancetype)initWithLeftViewController:(UIViewController *)leftViewController mainViewController:(UIViewController *)mainViewController gap:(NSInteger)gap;
+-(void)toggleMenu;
+
 @end

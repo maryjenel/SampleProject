@@ -59,32 +59,47 @@
     self.sideBarVC = [[SideBarViewController alloc]initWithLeftViewController:self.menuNav mainViewController:self.profileNav gap:50];
     //creates a new window for the root VC
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.profileNav;
+    self.window.rootViewController = self.sideBarVC;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
 -(void)DidTapMenuButtonOnProfileVC:(ProfileViewController *)controller
 {
-    self.window.rootViewController = self.menuNav;
+   // self.window.rootViewController = self.sideBarVC;
+    [self.sideBarVC toggleMenu];
+
 }
 -(void)DidTapMenuButtonOnSearchVC:(SearchViewController *)controller
 {
-    self.window.rootViewController = self.menuNav;
+    self.window.rootViewController = self.sideBarVC;
+    [self.sideBarVC toggleMenu];
+
 
 }
 -(void)DidTapMenuButtonOnActivityVC:(ActivityViewController *)controller
 {
-    self.window.rootViewController = self.menuNav;
+   self.window.rootViewController = self.sideBarVC;
+    [self.sideBarVC toggleMenu];
+
 }
 -(void)DidTapMenuButtonOnFriendsVC:(FriendsViewController *)controller
 {
-    self.window.rootViewController = self.menuNav;
+    self.window.rootViewController = self.sideBarVC;
+    [self.sideBarVC toggleMenu];
+
+}
+-(void)DidTapMenuButtononOpportunitiesVC:(OpportunitiesViewController *)controller
+{
+    self.window.rootViewController = self.sideBarVC;
+    [self.sideBarVC toggleMenu];
+
 }
 
 -(void)menuDidTapProfile:(MenuTableViewController *)controller
 {
-    self.window.rootViewController = self.profileNav;
+   // self.window.rootViewController = self.profileNav;
+    [self.sideBarVC toggleMenu];
     if (self.profileNav.viewControllers[0] != self.profileVC) {
         [self.profileNav setViewControllers:@[self.profileVC] animated:YES];
     }
@@ -92,6 +107,7 @@
 -(void)menuDidTapFriends:(MenuTableViewController *)controller
 {
    self.window.rootViewController = self.friendsNav;
+    [self.sideBarVC toggleMenu];
     if (self.friendsNav.viewControllers[0] != self.friendsVC)
     {
         [self.friendsNav setViewControllers:@[self.friendsVC] animated:YES];
@@ -101,6 +117,7 @@
 -(void)menuDidTapOpportunities:(MenuTableViewController *)controller
 {
    self.window.rootViewController = self.opportunitiesNav;
+    [self.sideBarVC toggleMenu];
     if (self.opportunitiesNav.viewControllers[0] != self.opportunitiesVC) {
         [self.opportunitiesNav setViewControllers:@[self.opportunitiesVC] animated:YES];
     }
@@ -109,6 +126,7 @@
 -(void)menuDidTapSearch:(MenuTableViewController *)controller
 {
    self.window.rootViewController = self.searchNav;
+    [self.sideBarVC toggleMenu];
     if (self.searchNav.viewControllers[0] != self.searchVC) {
         [self.searchNav setViewControllers:@[self.searchVC] animated:YES];
     }
@@ -116,18 +134,14 @@
 -(void)menuDidTapActivity:(MenuTableViewController *)controller
 {
    self.window.rootViewController = self.activityNav;
+    [self.sideBarVC toggleMenu];
     if (self.activityNav.viewControllers[0] != self.activityVC) {
         [self.activityNav setViewControllers:@[self.opportunitiesVC] animated:YES];
     }
 
 }
 
--(void)DidTapMenuButtononOpportunitiesVC:(OpportunitiesViewController *)controller
-{
-    self.window.rootViewController = self.menuNav;
 
-
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
