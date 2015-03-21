@@ -66,12 +66,16 @@
 }
 -(void)DidTapMenuButtonOnProfileVC:(ProfileViewController *)controller
 {
-   // self.window.rootViewController = self.sideBarVC;
+    self.sideBarVC.mainViewController = self.profileNav;
+    [self.sideBarVC setupViewControllers];
+    self.window.rootViewController = self.sideBarVC;
     [self.sideBarVC toggleMenu];
 
 }
 -(void)DidTapMenuButtonOnSearchVC:(SearchViewController *)controller
 {
+    self.sideBarVC.mainViewController = self.searchNav;
+    [self.sideBarVC setupViewControllers];
     self.window.rootViewController = self.sideBarVC;
     [self.sideBarVC toggleMenu];
 
@@ -79,18 +83,29 @@
 }
 -(void)DidTapMenuButtonOnActivityVC:(ActivityViewController *)controller
 {
-   self.window.rootViewController = self.sideBarVC;
+
+
+    self.sideBarVC.mainViewController = self.activityNav;
+    [self.sideBarVC setupViewControllers];
+    self.window.rootViewController = self.sideBarVC;
     [self.sideBarVC toggleMenu];
+
+
+
 
 }
 -(void)DidTapMenuButtonOnFriendsVC:(FriendsViewController *)controller
 {
+    self.sideBarVC.mainViewController = self.friendsNav;
+    [self.sideBarVC setupViewControllers];
     self.window.rootViewController = self.sideBarVC;
     [self.sideBarVC toggleMenu];
 
 }
 -(void)DidTapMenuButtononOpportunitiesVC:(OpportunitiesViewController *)controller
 {
+    self.sideBarVC.mainViewController = self.opportunitiesNav;
+    [self.sideBarVC setupViewControllers];
     self.window.rootViewController = self.sideBarVC;
     [self.sideBarVC toggleMenu];
 
@@ -98,7 +113,11 @@
 
 -(void)menuDidTapProfile:(MenuTableViewController *)controller
 {
-   // self.window.rootViewController = self.profileNav;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.profileVC = [storyboard instantiateViewControllerWithIdentifier:@"profileVC"];
+    self.profileVC.delegate = self;
+    self.profileNav = [[UINavigationController alloc]initWithRootViewController:self.profileVC];
+    self.window.rootViewController = self.profileNav;
     [self.sideBarVC toggleMenu];
     if (self.profileNav.viewControllers[0] != self.profileVC) {
         [self.profileNav setViewControllers:@[self.profileVC] animated:YES];
@@ -106,16 +125,27 @@
 }
 -(void)menuDidTapFriends:(MenuTableViewController *)controller
 {
-   self.window.rootViewController = self.friendsNav;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.friendsVC = [storyboard instantiateViewControllerWithIdentifier:@"friendsVC"];
+    self.friendsVC.delegate = self;
+    self.friendsNav = [[UINavigationController alloc]initWithRootViewController:self.friendsVC];
+        self.window.rootViewController = self.friendsNav;
+        if (self.friendsNav.viewControllers[0] != self.friendsVC)
+        {
+            [self.friendsNav setViewControllers:@[self.friendsVC] animated:YES];
+        }
+
+
     [self.sideBarVC toggleMenu];
-    if (self.friendsNav.viewControllers[0] != self.friendsVC)
-    {
-        [self.friendsNav setViewControllers:@[self.friendsVC] animated:YES];
-    }
+
     
 }
 -(void)menuDidTapOpportunities:(MenuTableViewController *)controller
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.opportunitiesVC = [storyboard instantiateViewControllerWithIdentifier:@"opportunitiesVC"];
+    self.opportunitiesVC.delegate = self;
+    self.opportunitiesNav = [[UINavigationController alloc]initWithRootViewController:self.opportunitiesVC];
    self.window.rootViewController = self.opportunitiesNav;
     [self.sideBarVC toggleMenu];
     if (self.opportunitiesNav.viewControllers[0] != self.opportunitiesVC) {
@@ -125,6 +155,12 @@
 }
 -(void)menuDidTapSearch:(MenuTableViewController *)controller
 {
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.searchVC = [storyboard instantiateViewControllerWithIdentifier:@"searchVC"];
+    self.searchVC.delegate = self;
+    self.searchNav = [[UINavigationController alloc]initWithRootViewController:self.searchVC];
+
    self.window.rootViewController = self.searchNav;
     [self.sideBarVC toggleMenu];
     if (self.searchNav.viewControllers[0] != self.searchVC) {
@@ -133,10 +169,15 @@
 }
 -(void)menuDidTapActivity:(MenuTableViewController *)controller
 {
-   self.window.rootViewController = self.activityNav;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.activityVC = [storyboard instantiateViewControllerWithIdentifier:@"activityVC"];
+    self.activityVC.delegate = self;
+    self.activityNav = [[UINavigationController alloc]initWithRootViewController:self.activityVC];
+
+    self.window.rootViewController = self.activityNav;
     [self.sideBarVC toggleMenu];
     if (self.activityNav.viewControllers[0] != self.activityVC) {
-        [self.activityNav setViewControllers:@[self.opportunitiesVC] animated:YES];
+        [self.activityNav setViewControllers:@[self.activityVC] animated:YES];
     }
 
 }

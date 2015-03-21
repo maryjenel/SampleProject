@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SideBarViewController : UIViewController
+@property (nonatomic, strong) UIViewController *mainViewController;
 
 -(instancetype)initWithLeftViewController:(UIViewController *)leftViewController mainViewController:(UIViewController *)mainViewController gap:(NSInteger)gap;
 -(void)toggleMenu;
+-(void)setupViewControllers;
 
 @end

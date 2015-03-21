@@ -11,7 +11,6 @@
 @interface SideBarViewController ()
 
 @property (nonatomic, strong) UIViewController *leftViewController;
-@property (nonatomic, strong) UIViewController *mainViewController;
 @property (nonatomic, assign) NSInteger gap;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
